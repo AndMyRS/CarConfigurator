@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Cloud Car Configurator</title>
+    <link rel="stylesheet" th:href="@{/styles.css}" />
+</head>
+
+<body>
+<h1>Create your configuration!</h1>
+<img th:src="@{/images/CloudCarConfigurator.png}"/>
+
+<form method="POST" th:object="${configuration}">
+    <div class="grid">
+        <div class="carFeature-group" id="wheels">
+            <h3>Designate your wheels:</h3>
+            <div th:each="carFeature : ${wheels}">
+                <input th:field="*{features}" type="checkbox"
+                       th:value="${carFeature.id}"/>
+                <span th:text="${carFeature.name}">FEATURE</span><br/>
+            </div>
+        </div>
+
+        <div class="carFeature-group" id="colour">
+            <h3>Pick your colour:</h3>
+            <div th:each="carFeature : ${colour}">
+                <input th:field="*{features}" type="checkbox"
+                       th:value="${carFeature.id}"/>
+                <span th:text="${carFeature.name}">FEATURE</span><br/>
+            </div>
+        </div>
+
+        <div class="carFeature-group" id="light">
+            <h3>Choose your light:</h3>
+            <div th:each="carFeature : ${light}">
+                <input th:field="*{features}" type="checkbox"
+                       th:value="${carFeature.id}"/>
+                <span th:text="${carFeature.name}">FEATURE</span><br/>
+            </div>
+        </div>
+
+        <div class="carFeature-group" id="engine">
+            <h3>Determine your engine:</h3>
+            <div th:each="carFeature : ${engine}">
+                <input th:field="*{features}" type="checkbox"
+                       th:value="${carFeature.id}"/>
+                <span th:text="${carFeature.name}">FEATURE</span><br/>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <h3>Name your created configuration:</h3>
+        <input type="text" th:field="*{name}"/>
+        <br/>
+        <button>Submit Your Configuration</button>
+    </div>
+</form>
+</body>
+</html>
